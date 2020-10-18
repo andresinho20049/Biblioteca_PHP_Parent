@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  php-webapp:
+    build: .
+    volumes:
+      - ./php_webapp/www:/var/www/html
+    ports:
+      - "80:80"
+    links:
+      - php-webapi
+  php-webapi:
+    build: .
+    volumes:
+      - ./php_webapi/src/main:/var/www/html
+    ports:
+      - "8080:8080"
+    links:
+      - banco
+  banco:
+    image: mysql:5.6
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_DATABASE=banco_mysql
+      - MYSQL_USER=root
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - ./database:/var/lib/mysql
+
