@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+
+<body>
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <script src="./login.js"></script>
+
+    <div class="container">
+        <h2 class="text-uppercase font-weight-bold" style="text-align:center">Login</h2>
+        <p>Preencha o form abaixo <code>.was-validated</code> com os dados de login para acessar o site:</p>
+        <p>Caso ainda não seja cadastrado no site, <a href="/auth/novoUsuario.html">click aqui</a>.</p>
+        <div id="authFormContainer" class="was-validated">
+            <div id="error-area"></div>
+            <form id="authForm" href="0#" autocomplete="off">
+                <div class="form-group">
+                    <label for="user">Username:</label>
+                    <input type="text" class="form-control" id="user" placeholder="usuario" name="user" 
+                    value="" required>
+                    <div class="invalid-feedback">Favor preencha corretamente o nome de usuario.</div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" placeholder="senha" name="password" required>
+                    <div class="invalid-feedback">Favor preencha corretamente sua senha.</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Logar</button>
+                <button type="reset" class="btn btn-warning">Limpar</button>
+            </form>
+        </div>
+        <div class="d-flex align-items-center flex-column">
+            <div class="mt-auto p-2">
+                <a href="/">
+                    <button type="button" class="btn btn-dark">Voltar Home</button>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+
+</body>
+
+</html>

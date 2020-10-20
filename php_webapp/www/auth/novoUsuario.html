@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Cadastro de Usuario</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+
+<body>
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <script src="./cadUsuario.js"></script>
+
+    <div class="container">
+        <h2 class="text-uppercase font-weight-bold" style="text-align:center">Cadastro</h2>
+        <p>Preencha o form abaixo <code>.was-validated</code> com seus dados para efetuar um novo cadastro de login</p>
+        <div id="authFormContainer" class="was-validated">
+            <div id="error-area"></div>
+            <form id="authForm" href="0#" autocomplete="off">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" class="form-control" id="nome" placeholder="Nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="user">Username:</label>
+                    <input type="text" class="form-control" id="user" placeholder="usuario" name="user" 
+                    value="" required>
+                    <div class="invalid-feedback">Favor preencher o campo de Username.</div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" placeholder="senha" name="password" required>
+                    <div class="invalid-feedback">Favor preencha corretamente sua senha.</div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control" id="email" placeholder="Email" name="email" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="reset" class="btn btn-warning">Limpar</button>
+            </form>
+        </div>
+        <div class="d-flex align-items-center flex-column">
+            <div class="mt-auto p-2">
+                <a href="/auth/login.html">
+                    <button type="button" class="btn btn-dark">Voltar Login</button>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+
+</body>
+
+</html>
