@@ -9,26 +9,36 @@
     <div class="container">
         <div class="jumbotron" style="text-align:center">
             <h1>Artigos</h1>
-            <p>O Nome é imagens fakeess, "fakeess" por não ser original, porem não diz que não seje bom!</p>
-            <p>Venha aprender com nossos artigos maneiras de implementar a tecnologia para facilitar ou agilizar
-                sua vida, dicas de photoshop, adobe premiere, after effects, dentre outras tecnologias que 
-                levaram a criação deste canal, aprendar a editar suas imagens e videos, realizando boas montagens
-                muitas vezes utilizando a pespectiva ou manipulação de tempo, gosta de logica? <br>
-                Então venha fazer parte do grupo de dev, leiâ mais sobre docker, git dentre outras tecnologias obrigatórias para um bom desenvolvedor.
+            <p>B²RAFS Livraria digital integrando cada vez mais o leitor!</p>
+            <p>Leia, escreva e estude, aqui você tem a comodidade de escrever otimos artigos, com o design 
+                HTML, mas como a praticidade de escrever no Word, escrevendo otimos artigos com markdown <br>
+                Então venha fazer parte do grupo, leiâ o artigo "como escrever em markdown" e junte ao time!
             </p>
         </div>
-        
+        <script>
+
+
+        </script>
+
+        <div class="float-right" id="bottom_up">
+            <a href="#top">
+            <div class="fixed-bottom">
+                <button class="btn btn-success btn-lg float-right" style="margin:50px 63px">up</button>
+            </div>
+            </a>
+        </div>
+
         <?php
             if(!$_GET['md']){
                 echo '<div class="list-group">';
                 $types = array( 'md' );
-                $path = './markdown';
+                $path = './pages/artigos/markdown';
                 $dir = new DirectoryIterator($path);
                 foreach ($dir as $fileInfo) {
                     $ext = strtolower( $fileInfo->getExtension() );
                     if( in_array( $ext, $types ) ) {
                         echo '
-                        <a href="artigos/consulta/'.basename($fileInfo->getFilename(), ".md").'" class="list-group-item list-group-item-action">'
+                        <a href="?page=artigos&subpage=consulta&md='.basename($fileInfo->getFilename(), ".md").'" class="list-group-item list-group-item-action">'
                             .basename($fileInfo->getFilename(), ".md").
                         '</a>';
                     }
@@ -36,12 +46,12 @@
                 echo '</div>';
             }else{
                 $file = $_GET['md'];
-                if(!file_exists('../markdown/'.$file.'.md')){
+                if(!file_exists('./pages/artigos/markdown/'.$file.'.md')){
                     echo '<script>
                             window.location.href = "404.php";
                         </script>';
                 }
-                $markdown = file_get_contents('../markdown/'.$file.'.md');
+                $markdown = file_get_contents('./pages/artigos/markdown/'.$file.'.md');
 
                 $converter = new CommonMarkConverter();
                 $cMarkdown = $converter->convertToHtml($markdown);
@@ -49,6 +59,7 @@
                 echo $html;
             }
         ?>
+        
     </div>
 </body>
 

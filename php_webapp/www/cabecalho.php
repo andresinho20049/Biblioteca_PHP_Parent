@@ -1,16 +1,17 @@
 <?php
     
-    $paginas = array('home'=>'home.php',
-                'produtos'=>'produtos.php',
-                'artigos'=>array('novo-artigo'=>'novoArquivo.php','consulta'=>'consulta.php'),
-                'sobre'=>'sobre.php');
 ?>
 <body>
     <header>
         <img src="./img/cabecalho.jpg" width=100% alt="" />
+        <div class="fixed-top">
+            <a href="./auth/login.html">
+                <button id="btnLogin" class="btn btn btn-outline-dark btn-sm float-right" style="margin:50px 63px, position:absolute, top: 0">Login</button>
+            </a>
+        </div>
         <nav id="navbar_top" class="navbar navbar-expand-md bg-dark navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="home">
+                <a class="navbar-brand" href="/">
                     <img src="./img/Logo.png" width="45" height="35" class="d-inline-block align-center" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -19,7 +20,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav mr-auto" id="navbar1">
                         <?php
                             foreach ($paginas as $key=>$value){
                                 #Verificar se não é array
@@ -54,6 +55,7 @@
             </div>
         </nav>
     </header>
+    
 </body>
 
 </html>
