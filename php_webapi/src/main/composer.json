@@ -1,0 +1,12 @@
+{
+    "require": {
+        "league/commonmark": "^1.5",
+        "lcobucci/jwt": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Andre\\Service\\": "service/",
+            "Andre\\Resources\\": "resources/"
+        }
+    }
+}
