@@ -1,29 +1,42 @@
+$(document).ready(function(){
+    $('#cadLivro').on('submit', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        createLivro();
+    });
+});
+
 function createLivro(){
+    console.log("Criando novo registro")
     var dadosForm = {
-        user: document.getElementById('user').value,
-        password: document.getElementById('password').value
+        nome: document.getElementById('nome').value,
+        valor: document.getElementById('valor').value,
+        quant: document.getElementById('quant').value,
+        isqn: document.getElementById('isqn').value,
+        genero: document.getElementById('genero').value,
+        editora: document.getElementById('editora').value,
+        author: document.getElementById('author').value
     };
     var body = JSON.stringify(dadosForm);
-    var request_url = "http://localhost:90/auth";
-    
+    var request_url = "http://localhost:90/livro";
+    var jwt = sessionStorage.getItem("jwt");
     
     jQuery.support.cors = true;
     $.ajax({
         type: 'POST',
         headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": request_url
+            "Authorization": "Bearer " + jwt
         },
         crossDomain: true,
         url: request_url,
         contentType: false,
         data: body,
         timeout: 5000
-    }).done(function(data){
-        sessionStorage.setItem("jwt", "data.jwt");
-        console.log("Acho que foi" + data) 
+    }).done(function(){
+        $('#msg').text('Cadastrado com sucesso').addClass("alert alert-success").show();
     }).fail(function(e){
-        $('#error-area').text('Authentication failed').addClass("alert alert-danger").show();
+        $('#msg').text('Falha no cadastro').addClass("alert alert-danger").show();
         console.log(e)
     });
 }
@@ -41,7 +54,7 @@ function findAllLivro() {
         timeout: 5000
     }).done(function(data){
         return data;
-    }).fail(function() {
-        window.location.replace("/auth/login.html");
+    }).fail(function(e) {
+        console.log(e)
     });
 }
