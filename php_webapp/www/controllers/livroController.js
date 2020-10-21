@@ -35,9 +35,10 @@ function createLivro(){
         timeout: 5000
     }).done(function(){
         $('#msg').text('Cadastrado com sucesso').addClass("alert alert-success").show();
+        setTimeout(function(){ location.reload(); }, 3000);
     }).fail(function(e){
         $('#msg').text('Falha no cadastro').addClass("alert alert-danger").show();
-        console.log(e)
+        console.log(e).remove
     });
 }
 
