@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  sessionStorage.removeItem("jwt");
   
   $('#authForm').on('submit', function (e) {
 
@@ -52,14 +53,11 @@ function verify(jwt) {
     }).done(function(data){
       console.log("Verificando o nivel de acesso")
       switch (data['nivel']){
-        case "1":
-          console.log("Usuario comum")
-          break;
         case "2":
           console.log("Usuario Administrador")
           break;
         default:
-          console.log("Nao autenticado")
+          console.log("Usuario comum")
       }
       
       sessionStorage.setItem("jwt", jwt);
@@ -70,5 +68,5 @@ function verify(jwt) {
       $('#error-area').text('Authentication failed').addClass("alert alert-danger").show();
       console.log(e)
     });
-    }
+  }
 }
