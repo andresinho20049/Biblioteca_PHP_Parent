@@ -2,6 +2,7 @@ var prevScrollpos = window.pageYOffset;
 $(window).scroll(function () {
     if ($(this).scrollTop() > 290) {
         $('#navbar_top').addClass("fixed-top");
+        $('#bottom_up').css('visibility', hidden);
         // add padding top to show content behind navbar
         $('body').css('padding-top', $('.navbar').outerHeight() + 'px');
         var currentScrollPos = window.pageYOffset;
@@ -17,16 +18,26 @@ $(window).scroll(function () {
         $('#navbar_top').removeClass("fixed-top");
         // remove padding top from body
         $('body').css('padding-top', '0');
+        $('#bottom_up').css('visibility', '');
     }
 });
 
 $(document).ready(function () {
-    var pathname = window.location.href.split('#')[0];
-    $('a[href^="#"]').each(function () {
-        var $this = $(this),
-            link = $this.attr('href');
-        $this.attr('href', pathname + link);
+
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 100) {
+            $('a[href="#top"]').fadeIn();
+        } else {
+            $('a[href="#top"]').fadeOut();
+        }
     });
+
+    $('a[href="#top"]').click(function(){
+        $('html, body').animate({scrollTop : 0},800);
+        return false;
+    });
+
+
 });
 
 // Adicione o seguinte código se quiser que o nome do arquivo apareça na seleção
