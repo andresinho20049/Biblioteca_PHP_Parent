@@ -42,7 +42,7 @@ function loadpage(action){
             if (nivel === "2") {
 
                 //**************Criando novo item de Menu para adicionar ao Navbar*************
-                var menuItem = document.createTextNode("Config");
+                var menuItem = document.createTextNode("Administracao");
 
                 var link = document.createElement("A");
                 link.className = 'nav-link';

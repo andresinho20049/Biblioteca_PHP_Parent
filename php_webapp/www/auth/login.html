@@ -13,27 +13,36 @@
     <script src="./login.js"></script>
 
     <div class="container">
-        <h2 class="text-uppercase font-weight-bold" style="text-align:center">Login</h2>
-        <p>Preencha o form abaixo <code>.was-validated</code> com os dados de login para acessar o site:</p>
-        <p>Caso ainda não seja cadastrado no site, <a href="/auth/novoUsuario.html">click aqui</a>.</p>
-        <div id="authFormContainer" class="was-validated">
-            <div id="error-area"></div>
-            <form id="authForm" href="0#" autocomplete="off">
-                <div class="form-group">
-                    <label for="user">Username:</label>
-                    <input type="text" class="form-control" id="user" placeholder="usuario" name="user" 
-                    value="" required>
-                    <div class="invalid-feedback">Favor preencha corretamente o nome de usuario.</div>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" class="form-control" id="password" placeholder="senha" name="password" required>
-                    <div class="invalid-feedback">Favor preencha corretamente sua senha.</div>
-                </div>
-                <button type="submit" class="btn btn-primary">Logar</button>
-                <button type="reset" class="btn btn-warning">Limpar</button>
-            </form>
+        <div style="margin-top: 50px;">
+            <h2 class="text-uppercase font-weight-bold" style="text-align:center">Login</h2>
+            <div class="row justify-content-center align-items-center">
+                <p class="text-muted">Preencha o form abaixo <code>.was-validated</code> com os dados de login para acessar o site:</p><br>
+            </div>
+            <div class="row justify-content-center align-items-center">
+                <p class="text-muted">Caso ainda não seja cadastrado no site, <a href="/auth/novoUsuario.html">click aqui</a>.</p>
+            </div>
         </div>
+        <div class="row justify-content-center align-items-center">
+            <div id="authFormContainer" class="was-validated">
+                <div id="error-area"></div>
+                <form id="authForm" href="0#" autocomplete="off">
+                    <div class="form-group">
+                        <label for="user">Username:</label>
+                        <input type="text" class="form-control" id="user" placeholder="usuario" name="user" 
+                        value="" required>
+                        <div class="invalid-feedback">Favor preencha corretamente o nome de usuario.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="senha" name="password" required>
+                        <div class="invalid-feedback">Favor preencha corretamente sua senha.</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Logar</button>
+                    <button type="reset" class="btn btn-warning">Limpar</button>
+                </form>
+            </div>
+        </div>
+        <br>
         <div class="d-flex align-items-center flex-column">
             <div class="mt-auto p-2">
                 <a href="/">
@@ -41,7 +50,6 @@
                 </a>
             </div>
         </div>
-        
     </div>
 
 </body>

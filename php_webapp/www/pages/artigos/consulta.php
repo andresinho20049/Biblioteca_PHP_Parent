@@ -6,6 +6,7 @@
 <html lang="pt-br">
 
 <body>
+    <script src="/js/personalize.js"></script>
     <div class="container">
         <div class="jumbotron" style="text-align:center">
             <h1>Artigos</h1>
@@ -15,14 +16,10 @@
                 Então venha fazer parte do grupo, leiâ o artigo "como escrever em markdown" e junte ao time!
             </p>
         </div>
-        <script>
-
-
-        </script>
 
         <div class="float-right" id="bottom_up">
             <a href="#top">
-            <div class="fixed-bottom">
+            <div class="fixed-bottom" style="visibility:hidden">
                 <button class="btn btn-success btn-lg float-right" style="margin:50px 63px">up</button>
             </div>
             </a>

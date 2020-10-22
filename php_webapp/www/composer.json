@@ -1,0 +1,13 @@
+{
+    "require": {
+        "league/commonmark": "^1.5",
+        "lcobucci/jwt": "^3.3"
+    },
+    "autoload": {
+        "name":"Andre",
+        "description":"Controller for api",
+        "psr-4": {
+            "Andre\\Controllers\\": "controllers/"
+        }
+    }
+}

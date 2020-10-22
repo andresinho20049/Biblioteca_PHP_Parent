@@ -13,7 +13,7 @@ services:
     volumes:
       - ./php_webapi/src/main:/var/www/html
     ports:
-      - "8080:8080"
+      - "90:80"
     links:
       - banco
   banco:

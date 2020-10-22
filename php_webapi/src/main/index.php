@@ -62,6 +62,11 @@ $app->before(function(Request $request, Application $app) {
         if($jwt) {
             try {
                 $app['jwt'] = JWTWrapper::decode($jwt);
+                if ($route != 'GET_verify') {
+                    if($app['jwt']->data->nivel != "2"){
+                        return new Response('Usuario nao tem permissao', 403);
+                    }
+                }
             } catch(Exception $ex) {
                 // nao foi possivel decodificar o token jwt
                 return new Response('Acesso nao autorizado', 403);
@@ -97,6 +102,41 @@ $app->post('/livro', function (Request $request) use ($app) {
     } else{
         http_response_code(400);
         return $app->json((array('erro'=>'Nao inserido no banco','status'=>'400')));
+    }
+});
+
+$app->get('/livro', function(Application $app) {
+    $livro = new Livro();
+    $stmt = $livro->getLivro();
+
+    $itemCount = $stmt->rowCount();
+    if($itemCount > 0){
+        
+        $lista = array();
+        $lista["livro"] = array();
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            //(Extrai variaveis iguai nome na base)
+            extract($row); //id, nome, valor, isqn, quant, genero, editora, author 
+            $p = array(
+                "id" => $id,
+                "nome" => $nome,
+                "valor" => $valor,
+                "isqn" => $isqn,
+                "quant" => $quant,
+                "genero" => $genero,
+                "editora" => $editora,
+                "author" => $author
+            );
+
+            array_push($lista["livro"], $p);
+        }
+        http_response_code(200);
+        return $app->json($lista);
+    }
+
+    else{
+        http_response_code(400);
+        return $app->json(array('erro'=>'Nao retorno itens','status'=>'400'));
     }
 });
 

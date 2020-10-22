@@ -38,11 +38,13 @@ function createLivro(){
         setTimeout(function(){ location.reload(); }, 3000);
     }).fail(function(e){
         $('#msg').text('Falha no cadastro').addClass("alert alert-danger").show();
-        console.log(e).remove
+        console.log(e)
     });
 }
 
 function findAllLivro() {
+    $("#content").load("./acervo.html");
+    
     $.ajax({
         type: 'GET',
         crossDomain: true,
@@ -54,8 +56,25 @@ function findAllLivro() {
         contentType: false,
         timeout: 5000
     }).done(function(data){
-        return data;
+        carregaacervo(data);
     }).fail(function(e) {
+        $('#msg').text('Nao foi possivel carregar a pagina').addClass("alert alert-danger").show();
         console.log(e)
     });
+}
+
+function deletaLivro(params) {
+    alert("Function Delete");
+}
+
+function editeLivro(id) {
+    alert("Function Edit id: " + id );
+    
+
+    document.getElementById(id).innerHTML = "Oshi";
+
+    $(this).parents("tr").find("td:not(:last-child)").each(function(){
+        $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+    });		
+    
 }

@@ -3,16 +3,16 @@
 ?>
 <body>
     <header>
-        <img src="./img/cabecalho.jpg" width=100% alt="" />
+        <img src="/img/cabecalho.jpg" width=100% alt="" />
         <div class="fixed-top">
-            <a href="./auth/login.html">
+            <a href="/auth/login.html">
                 <button id="btnLogin" class="btn btn btn-outline-dark btn-sm float-right" style="margin:50px 63px, position:absolute, top: 0">Login</button>
             </a>
         </div>
         <nav id="navbar_top" class="navbar navbar-expand-md bg-dark navbar-dark bg-primary">
             <div class="container">
                 <a class="navbar-brand" href="/">
-                    <img src="./img/Logo.png" width="45" height="35" class="d-inline-block align-center" alt="">
+                    <img src="/img/Logo.png" width="45" height="35" class="d-inline-block align-center" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
