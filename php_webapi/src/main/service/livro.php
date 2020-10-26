@@ -8,7 +8,7 @@
         public function getLivro(){
             $pdo = Banco::conectar();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sqlQuery = "SELECT id, nome, valor, isqn, quant, genero, editora, author FROM livro";
+            $sqlQuery = "SELECT id, nome, valor, isqn, quant, genero, editora, author FROM livro order by id ASC";
             $stmt = $pdo->prepare($sqlQuery);
             $stmt->execute();
             Banco::desconectar();
@@ -135,7 +135,7 @@
         }
 
         // DELETE
-        public function deleteProduto($id){
+        public function deletaLivro($id){
             $pdo = Banco::conectar();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "DELETE FROM livro WHERE id = :id";

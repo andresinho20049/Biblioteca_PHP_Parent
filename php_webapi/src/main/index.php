@@ -1,6 +1,6 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-//header("Access-Control-Allow-Methods: POST, GET, PUT, DELETE");
+header("Access-Control-Allow-Methods: POST, GET, PUT, DELETE");
 header("Access-Control-Allow-Headers: *");
 header("Access-Control-Allow-Credentials:true");
 header("Content-Type: application/json; charset=utf-8");
@@ -43,10 +43,10 @@ $app->post('/novousers', function (Request $request) use ($app) {
     $login = new Login();
     if($login->cadastro($usuario, $senha, $nome, $email, $nivel)){
         http_response_code(200);
-        return $app->json((array('mensagem'=>'Sucesso!','status'=>'200')));
+        return $app->json(array('mensagem'=>'Sucesso!','status'=>'200'));
     } else{
         http_response_code(400);
-        return $app->json((array('erro'=>'Nao inserido no banco','status'=>'400')));
+        return $app->json(array('erro'=>'Nao inserido no banco','status'=>'400'));
     }
     
 });
@@ -98,10 +98,32 @@ $app->post('/livro', function (Request $request) use ($app) {
 	$livro = new Livro();
     if($livro->createProduto($nome, $valor, $isqn, $quant, $genero, $editora, $author)){
         http_response_code(200);
-        return $app->json((array('mensagem'=>'Sucesso!','status'=>'200')));
+        return $app->json(array('mensagem'=>'Sucesso!','status'=>'200'));
     } else{
         http_response_code(400);
-        return $app->json((array('erro'=>'Nao inserido no banco','status'=>'400')));
+        return $app->json(array('erro'=>'Nao inserido no banco','status'=>'400'));
+    }
+});
+
+$app->put('/livro', function (Request $request) use ($app) {
+	$dados = json_decode($request->getContent(), true);
+
+    $id = $dados['id'];
+    $nome = $dados['nome'];
+	$valor = $dados['valor'];
+	$isqn = $dados['isqn'];
+	$quant = $dados['quant'];
+	$genero = $dados['genero'];
+	$editora = $dados['editora'];
+    $author = $dados['author'];
+	
+	$livro = new Livro();
+    if($livro->atualizaLivro($id, $nome, $valor, $isqn, $quant, $genero, $editora, $author)){
+        http_response_code(200);
+        return $app->json(array('mensagem'=>'Atualizado com sucesso!','status'=>'200'));
+    } else{
+        http_response_code(400);
+        return $app->json(array('erro'=>'Nao atualizado no banco','status'=>'400'));
     }
 });
 
@@ -137,6 +159,21 @@ $app->get('/livro', function(Application $app) {
     else{
         http_response_code(400);
         return $app->json(array('erro'=>'Nao retorno itens','status'=>'400'));
+    }
+});
+
+$app->delete('/livro', function (Request $request) use ($app) {
+	$dados = json_decode($request->getContent(), true);
+
+    $id = $dados['id'];
+	
+	$livro = new Livro();
+    if($livro->deletaLivro($id)){
+        http_response_code(200);
+        return $app->json(array('mensagem'=>'Deletado com sucesso!','status'=>'200'));
+    } else{
+        http_response_code(400);
+        return $app->json(array('erro'=>'Nao deletado do banco','status'=>'400'));
     }
 });
 
