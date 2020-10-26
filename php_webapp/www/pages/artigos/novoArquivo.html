@@ -10,13 +10,13 @@
         <div class="containe">
             <div class="flex">Importe um markdown: </div>
             <div class="flex">
-                <form action="/pages/artigos/novoArquivo.php" method="POST" enctype="multipart/form-data">
+                <form id="form">
                     <div class="custom-file">
                         <input type="file" accept=".md" class="custom-file-input" name="fileUpload">
                         <label class="custom-file-label" for="customFile">Selecionar Arquivo</label>
                     </div>
                     <div class="mt-3">
-                        <button href="javascript:void(0)" onclick="storage();" class="btn btn-dark">Enviar</button>
+                        <button type="submit" class="btn btn-dark">Enviar</button>
                     </div>
                 </form>
                 <script src="../../js/personalize.js"></script>
@@ -24,8 +24,16 @@
         </div>
     </div>
     <script>
+        $(document).ready(function(){
+            $('#form').on('submit', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                storage();
+            });
+        });
         function storage(params) {
             alert("Anexo enviado para o email, no aguardo de aprovacao");
+            window.location.replace("/?page=artigos&subpage=consulta");
         }
     </script>
 </body>

@@ -8,12 +8,12 @@ function carregacadastro(data) {
 }
 
 function carregaacervo(json) {
+    var index = 0;
     result = json['livro'];
     result.forEach(element => {
 
         var id = document.createElement("TH");
         id.setAttribute("scope", "row");
-        id.setAttribute("id", "id_" + element.id);
         var nome = document.createElement("TD");
         var valor = document.createElement("TD");
         var isqn = document.createElement("TD");
@@ -33,8 +33,9 @@ function carregaacervo(json) {
 
         //Buttons de Edit e Delete
         var edit = document.createElement("A");
+        edit.setAttribute("id", "ed" + index);
         edit.setAttribute("href", "javascript:void(0)");
-        edit.setAttribute("onclick", "editeLivro(id_"+ element.id +");");
+        edit.setAttribute("onclick", "editeLivro(this);");
         edit.setAttribute("title", "Edit");
         edit.setAttribute("data-toggle", "tooltip");
         edit.setAttribute("style", "padding-right: 10px;")
@@ -44,7 +45,7 @@ function carregaacervo(json) {
 
         var deleta = document.createElement("A");
         deleta.setAttribute("href", "javascript:void(0)");
-        deleta.setAttribute("onclick", "deletaLivro(id_"+ element.id +");");
+        deleta.setAttribute("onclick", "deletaLivro(this);");
         deleta.setAttribute("title", "Delete");
         deleta.setAttribute("data-toggle", "tooltip");
         var iDeleta = document.createElement("I");
@@ -67,5 +68,6 @@ function carregaacervo(json) {
         tr.appendChild(actions);
 
         document.getElementById("tbodyLivro").appendChild(tr);
+        index += 1;
     });
 }

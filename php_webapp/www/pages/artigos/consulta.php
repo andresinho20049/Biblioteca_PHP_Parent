@@ -10,10 +10,10 @@
     <div class="container">
         <div class="jumbotron" style="text-align:center">
             <h1>Artigos</h1>
-            <p>B²RAFS Livraria digital integrando cada vez mais o leitor!</p>
+            <p>Imagens Fakeess Livraria digital integrando cada vez mais o leitor!</p>
             <p>Leia, escreva e estude, aqui você tem a comodidade de escrever otimos artigos, com o design 
                 HTML, mas como a praticidade de escrever no Word, escrevendo otimos artigos com markdown <br>
-                Então venha fazer parte do grupo, leiâ o artigo "como escrever em markdown" e junte ao time!
+                Então venha fazer parte do grupo, leiâ o doc <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank">"Folha de referências do Markdown"</a> e junte ao time!
             </p>
         </div>
 
