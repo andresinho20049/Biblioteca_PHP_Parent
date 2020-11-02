@@ -8,7 +8,7 @@
         public function getLivro(){
             $pdo = Banco::conectar();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sqlQuery = "SELECT id, nome, valor, isqn, quant, genero, editora, author FROM livro order by id ASC";
+            $sqlQuery = "SELECT id, nome, valor, isqn, quant, genero, editora, author, img FROM livro order by id ASC";
             $stmt = $pdo->prepare($sqlQuery);
             $stmt->execute();
             Banco::desconectar();
@@ -16,7 +16,7 @@
         }
         
         // Inserir
-        public function createProduto($nome, $valor, $isqn, $quant, $genero, $editora, $author){
+        public function createProduto($nome, $valor, $isqn, $quant, $genero, $editora, $author, $img){
             $pdo = Banco::conectar();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "INSERT INTO
@@ -28,7 +28,8 @@
                         quant = :quant, 
                         genero = :genero, 
                         editora = :editora,
-                        author = :author";
+                        author = :author,
+                        img = :img";
             
             $stmt = $pdo->prepare($sql);
         
@@ -40,6 +41,7 @@
             $genero=htmlspecialchars(strip_tags($genero));
             $editora=htmlspecialchars(strip_tags($editora));
             $author=htmlspecialchars(strip_tags($author));
+            $img=htmlspecialchars(strip_tags($img));
         
             // Passar parametros STMT
             $stmt->bindParam(":nome", $nome);
@@ -49,6 +51,7 @@
             $stmt->bindParam(":genero", $genero);
             $stmt->bindParam(":editora", $editora);
             $stmt->bindParam(":author", $author);
+            $stmt->bindParam(":img", $img);
         
             if($stmt->execute()){
                 Banco::desconectar();
@@ -70,7 +73,8 @@
                             quant,
                             genero,
                             editora,
-                            author
+                            author,
+                            img
                         FROM 
                             livro
                         WHERE 
@@ -88,7 +92,7 @@
         }        
 
         // Atualizar
-        public function atualizaLivro($id, $nome, $valor, $isqn, $quant, $genero, $editora, $author){
+        public function atualizaLivro($id, $nome, $valor, $isqn, $quant, $genero, $editora, $author, $img){
             $pdo = Banco::conectar();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "UPDATE
@@ -100,7 +104,8 @@
                         quant = :quant, 
                         genero = :genero, 
                         editora = :editora,
-                        author = :author
+                        author = :author,
+                        img = :img
                     WHERE 
                         id = :id";
         
@@ -114,6 +119,7 @@
             $genero=htmlspecialchars(strip_tags($genero));
             $editora=htmlspecialchars(strip_tags($editora));
             $author=htmlspecialchars(strip_tags($author));
+            $img=htmlspecialchars(strip_tags($img));
             $id=htmlspecialchars(strip_tags($id));
         
             // Passar parametros STMT
@@ -124,6 +130,7 @@
             $stmt->bindParam(":genero", $genero);
             $stmt->bindParam(":editora", $editora);
             $stmt->bindParam(":author", $author);
+            $stmt->bindParam(":img", $img);
             $stmt->bindParam(":id", $id);
         
             if($stmt->execute()){

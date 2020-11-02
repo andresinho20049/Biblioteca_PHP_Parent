@@ -93,10 +93,11 @@ $app->post('/livro', function (Request $request) use ($app) {
 	$quant = $dados['quant'];
 	$genero = $dados['genero'];
 	$editora = $dados['editora'];
-	$author = $dados['author'];
+    $author = $dados['author'];
+    $img = $dados['img'];
 	
 	$livro = new Livro();
-    if($livro->createProduto($nome, $valor, $isqn, $quant, $genero, $editora, $author)){
+    if($livro->createProduto($nome, $valor, $isqn, $quant, $genero, $editora, $author, $img)){
         http_response_code(200);
         return $app->json(array('mensagem'=>'Sucesso!','status'=>'200'));
     } else{
@@ -116,9 +117,10 @@ $app->put('/livro', function (Request $request) use ($app) {
 	$genero = $dados['genero'];
 	$editora = $dados['editora'];
     $author = $dados['author'];
+    $img = $dados['img'];
 	
 	$livro = new Livro();
-    if($livro->atualizaLivro($id, $nome, $valor, $isqn, $quant, $genero, $editora, $author)){
+    if($livro->atualizaLivro($id, $nome, $valor, $isqn, $quant, $genero, $editora, $author, $img)){
         http_response_code(200);
         return $app->json(array('mensagem'=>'Atualizado com sucesso!','status'=>'200'));
     } else{
@@ -138,7 +140,7 @@ $app->get('/livro', function(Application $app) {
         $lista["livro"] = array();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             //(Extrai variaveis iguai nome na base)
-            extract($row); //id, nome, valor, isqn, quant, genero, editora, author 
+            extract($row); //id, nome, valor, isqn, quant, genero, editora, author, img 
             $p = array(
                 "id" => $id,
                 "nome" => $nome,
@@ -147,7 +149,8 @@ $app->get('/livro', function(Application $app) {
                 "quant" => $quant,
                 "genero" => $genero,
                 "editora" => $editora,
-                "author" => $author
+                "author" => $author,
+                "img" => $img
             );
 
             array_push($lista["livro"], $p);
