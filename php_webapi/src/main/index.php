@@ -62,7 +62,7 @@ $app->before(function(Request $request, Application $app) {
         if($jwt) {
             try {
                 $app['jwt'] = JWTWrapper::decode($jwt);
-                if ($route != 'GET_verify') {
+                if ($route != 'GET_verify' && $route != 'GET_livro') {
                     if($app['jwt']->data->nivel != "2"){
                         return new Response('Usuario nao tem permissao', 403);
                     }

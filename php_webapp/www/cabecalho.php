@@ -6,7 +6,7 @@
         <img src="/img/cabecalho.jpg" width=100% alt="" />
         <div class="fixed-top">
             <a href="/auth/login.html">
-                <button id="btnLogin" class="btn btn btn-outline-dark btn-sm float-right" style="margin:50px 63px, position:absolute, top: 0">Login</button>
+                <button id="btnLogin" class="btn btn btn-outline-dark btn-sm float-right" style="margin:50px 63px, position:absolute, top: 0">Logout</button>
             </a>
         </div>
         <nav id="navbar_top" class="navbar navbar-expand-md bg-dark navbar-dark bg-primary">

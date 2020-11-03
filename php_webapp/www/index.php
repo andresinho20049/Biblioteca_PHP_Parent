@@ -8,7 +8,7 @@ require_once 'vendor/autoload.php';
 $paginas = array('home'=>'home.html',
                 'livros'=>'livros.html',
                 'artigos'=>array('novo-artigo'=>'novoArquivo.html','consulta'=>'consulta.php'),
-                'sobre'=>'sobre.html');
+                );
 
 ?>
 <!DOCTYPE html>
@@ -37,7 +37,9 @@ $paginas = array('home'=>'home.html',
     <script src="/js/jquery-migrate-3.3.1.js"></script>
     <script src="/controllers/loadPage.js"></script>
     <script src="/controllers/indexController.js"></script>
+    <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/personalize.js"></script>
 
  </body>
 
