@@ -6,6 +6,37 @@ $(document).ready(function(){
     });
 });
 
+function format(iValor) {
+
+    var mask = {
+        money: function() {
+           var el = this
+           ,exec = function(v) {
+           v = v.replace(/\D/g,"");
+           v = new String(Number(v));
+           var len = v.length;
+           if (1== len)
+           v = v.replace(/(\d)/,"0.0$1");
+           else if (2 == len)
+           v = v.replace(/(\d)/,"0.$1");
+           else if (len > 2) {
+           v = v.replace(/(\d{2})$/,'.$1');
+           }
+           return v;
+           };
+       
+           setTimeout(function(){
+           el.value = exec(el.value);
+           },1);
+        }
+       
+       }
+       
+       $(function(){
+        $(iValor).bind('keypress',mask.money)
+       });
+}
+
 function carregaacervo(json) {
     var index = 0;
     result = json['livro'];
@@ -106,11 +137,13 @@ function editeLivro(ctl) {
         author = $(cols[6]).text();
         img = $(cols[7]).text();
 
+        
+
         $(cols[0]).html('<input id="nome' + id + '" type="text" class="form-control" value="' + nome + '">');
-        $(cols[1]).html('<input id="valor' + id + '" type="number" class="form-control" value="' + valor + '">');
+        $(cols[1]).html('<input id="valor' + id + '" type="text" onkeydown="format(this);" class="form-control" value="' + valor + '">');
         $(cols[2]).html('<input id="isqn' + id + '" type="number" class="form-control" value="' + isqn + '">');
         $(cols[3]).html('<input id="quant' + id + '" type="number" class="form-control" value="' + quant + '">');
-        $(cols[4]).html('<input id="genero' + id + '"type="text" class="form-control" value="' + genero + '">');
+        $(cols[4]).html('<input id="genero' + id + '" type="text" class="form-control" value="' + genero + '">');
         $(cols[5]).html('<input id="editora' + id + '" type="text" class="form-control" value="' + editora + '">');
         $(cols[6]).html('<input id="author' + id + '" type="text" class="form-control" value="' + author + '">');
         $(cols[7]).html('<input id="img' + id + '" type="text" for="input-file" class="form-control" value="' + img + '">');

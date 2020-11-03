@@ -8,14 +8,12 @@ $(window).scroll(function () {
         if ($(this).scrollTop() > 350) {
             if (prevScrollpos > currentScrollPos) {
                 document.getElementById("navbar_top").style.top = "0";
-                document.getElementById("bottom_up").style.visibility = 'visible';
             } else {
                 document.getElementById("navbar_top").style.top = "-50px";
             }
             prevScrollpos = currentScrollPos;
         }
     } else {
-        document.getElementById("bottom_up").style.visibility = 'hidden';
         $('#navbar_top').removeClass("fixed-top");
         // remove padding top from body
         $('body').css('padding-top', '0');
