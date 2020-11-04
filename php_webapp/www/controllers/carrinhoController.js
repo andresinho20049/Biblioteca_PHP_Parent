@@ -17,29 +17,37 @@ function getLivro() {
         url: "http://localhost:90/livro",
         contentType: false,
         timeout: 5000
-    }).done(function(data){
-        carregaLista(data);
+    }).done(function(json){
+        result = json['livro'];
+        carregaLista();
     }).fail(function(e) {
         alert("Error: " + e.error);
     });
 }
 
-function carregaLista(json) {
+var tamanhoPagina = 10;
+var pagina = 0;
+var result;
+
+function carregaLista() {
     var index = 0;
-    result = json['livro'];
 
-    var divSub = document.createElement("DIV");
-    var size = document.createElement("H5");
-    size.className = "mb-4";
-    size.innerHTML = result.length + " itens";
-
-    divSub.appendChild(size);
+    var size = document.getElementById('totalItens');
+    size.innerHTML = "Total: " + result.length + " livros";
 
     var divLista = document.getElementById("listaCar");
-    divLista.appendChild(divSub);
+    const pag = divLista.querySelector("#divPag");
 
-    result.forEach(e => {
+    if (pag !== null) {
+        $(pag).remove();
+    }
 
+    var divPag = document.createElement("DIV");
+    divPag.setAttribute("id", "divPag");
+
+    for (var i = pagina * tamanhoPagina; i < result.length && i < (pagina + 1) * tamanhoPagina; i++) {
+        var e = result[i];
+        
         //Imagem no canto da tela
         var imgDiv = document.createElement("DIV");
         imgDiv.className = "view zoom overlay z-depth-1 rounded mb-3 mb-md-0";
@@ -140,12 +148,35 @@ function carregaLista(json) {
         var hr = document.createElement("HR");
         hr.className = "mb-4";
 
-        divLista = document.getElementById("listaCar");
-        divLista.appendChild(row);
-        divLista.appendChild(hr);
+        divPag.appendChild(row);
+        divPag.appendChild(hr);
         index += 1;
-    });
+    }
+    divLista.appendChild(divPag);
+    ajustarPaginacao();
 }
+
+function ajustarPaginacao() {
+    window.scrollTo({top: 310, behavior: 'smooth'});
+    $('#numeracao').text('Página ' + (pagina + 1) + ' de ' + Math.ceil(result.length / tamanhoPagina));
+    $('#proximo').prop('disabled', result.length <= tamanhoPagina || pagina >= Math.ceil(result.length / tamanhoPagina) - 1);
+    $('#anterior').prop('disabled', result.length <= tamanhoPagina || pagina == 0);
+}
+
+$(function() {
+    $('#proximo').click(function() {
+        if (pagina < result.length / tamanhoPagina - 1) {
+        pagina++;
+        carregaLista();
+        }
+    });
+    $('#anterior').click(function() {
+        if (pagina > 0) {
+        pagina--;
+        carregaLista();
+        }
+    });
+});
 
 function addCar(livro) {
     var id = livro.id;
