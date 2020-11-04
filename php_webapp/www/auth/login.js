@@ -3,9 +3,13 @@ $(document).ready(function(){
   
   $('#authForm').on('submit', function (e) {
 
+    var password = document.getElementById('password').value
+    var encrypt = btoa(password);
+    //console.log(encrypt);
+
     var dadosForm = {
       user: document.getElementById('user').value,
-      password: document.getElementById('password').value
+      password: encrypt
     };
     var body = JSON.stringify(dadosForm);
     var request_url = "http://localhost:90/auth";
@@ -14,7 +18,7 @@ $(document).ready(function(){
     $.ajax({
         type: 'POST',
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/x-www-form-urlencoded"
         },
         crossDomain: true,
         url: request_url,

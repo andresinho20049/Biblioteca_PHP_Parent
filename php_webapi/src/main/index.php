@@ -25,7 +25,7 @@ $app->post('/auth', function (Request $request) use ($app) {
 	$dados = json_decode($request->getContent(), true);
 	
 	$usuario = $dados['user'];
-	$senha = $dados['password'];
+    $senha = base64_decode($dados['password']);
 	
 	$login = new Login();
     return $app->json($login->novo_login($usuario, $senha));
