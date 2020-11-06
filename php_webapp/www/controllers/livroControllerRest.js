@@ -20,7 +20,7 @@ function createLivro(){
     $.ajax({
         type: 'POST',
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json; charset=utf-8",
             "Authorization": "Bearer " + jwt
         },
         crossDomain: true,
@@ -59,7 +59,7 @@ function atualizaLivro(){
     $.ajax({
         type: 'PUT',
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json; charset=utf-8",
             "Authorization": "Bearer " + jwt
         },
         crossDomain: true,
@@ -89,7 +89,7 @@ function deleteLivro(){
     $.ajax({
         type: 'DELETE',
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json; charset=utf-8/json",
             "Authorization": "Bearer " + jwt
         },
         crossDomain: true,

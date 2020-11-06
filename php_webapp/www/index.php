@@ -7,9 +7,8 @@ require_once 'vendor/autoload.php';
 
 $paginas = array('home'=>'home.html',
                 'livros'=>'livros.html',
-                'artigos'=>array('novo-artigo'=>'novoArquivo.html','consulta'=>'consulta.php'),
+                'artigos'=>array('novo-artigo'=>'novoArquivo.html','consulta'=>'consulta.php')
                 );
-
 ?>
 <!DOCTYPE html>
  
@@ -48,6 +47,16 @@ $paginas = array('home'=>'home.html',
     //Carregar Pagina
     include_once "cabecalho.php";
 
+
+    function f(&$x, &$y){
+        $x = $x + 1;
+        $y = $y + 1;
+    }
+    $x = 2;
+    f($x, $x);
+    echo $x;
+
+
     $pagina = isset($_GET['page'])?$_GET['page']:'home';
     $incluir = "pages/".$paginas[$pagina];
     if (isset($_GET['subpage'])) {
@@ -55,7 +64,9 @@ $paginas = array('home'=>'home.html',
         $incluir = "pages/".$pagina."/".$paginas[$pagina][$subPagina];
     }
 
-    include $incluir;
+    if((@include $incluir) === false){
+        include "404.php";
+    }
     
     include "rodape.html";
 ?>

@@ -22,7 +22,9 @@ $app = new Silex\Application();
 
 // Autenticacao
 $app->post('/auth', function (Request $request) use ($app) {
-	$dados = json_decode($request->getContent(), true);
+    $auth = $request->headers->get("Authorization");
+    $dados = base64_decode($auth);
+	$dados = json_decode($dados, true);
 	
 	$usuario = $dados['user'];
     $senha = base64_decode($dados['password']);

@@ -5,25 +5,26 @@ $(document).ready(function(){
 
     var password = document.getElementById('password').value
     var encrypt = btoa(password);
-    //console.log(encrypt);
 
     var dadosForm = {
       user: document.getElementById('user').value,
       password: encrypt
     };
+
     var body = JSON.stringify(dadosForm);
+    auth = btoa(body);
     var request_url = "http://localhost:90/auth";
     
     jQuery.support.cors = true;
     $.ajax({
         type: 'POST',
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
+          "Authorization": auth,
+          "Access-Control-Allow-Origin": "*"
         },
         crossDomain: true,
         url: request_url,
         contentType: false,
-        data: body,
         timeout: 5000
     }).done(function(data){
       verify(data["jwt"]);
