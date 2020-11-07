@@ -47,16 +47,6 @@ $paginas = array('home'=>'home.html',
     //Carregar Pagina
     include_once "cabecalho.php";
 
-
-    function f(&$x, &$y){
-        $x = $x + 1;
-        $y = $y + 1;
-    }
-    $x = 2;
-    f($x, $x);
-    echo $x;
-
-
     $pagina = isset($_GET['page'])?$_GET['page']:'home';
     $incluir = "pages/".$paginas[$pagina];
     if (isset($_GET['subpage'])) {
