@@ -1,11 +1,11 @@
 var prevScrollpos = window.pageYOffset;
 $(window).scroll(function () {
-    if ($(this).scrollTop() > 280) {
+    if ($(this).scrollTop() > 290) {
         $('#navbar_top').addClass("fixed-top");
         // add padding top to show content behind navbar
         $('body').css('padding-top', $('.navbar').outerHeight() + 'px');
         var currentScrollPos = window.pageYOffset;
-        if ($(this).scrollTop() > 355) {
+        if ($(this).scrollTop() > 360) {
             if (prevScrollpos > currentScrollPos) {
                 document.getElementById("navbar_top").style.top = "0";
             } else {

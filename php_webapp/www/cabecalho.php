@@ -3,7 +3,7 @@
 ?>
 <body>
     <header>
-        <img src="/img/cabecalho.jpg" width=100% alt="" />
+        <img src="/img/Cabecalho.jpg" width=100% alt="" />
         <div class="fixed-top">
             <a href="/auth/login.html">
                 <button id="btnLogin" class="btn btn btn-outline-dark btn-sm float-right" style="margin:50px 63px, position:absolute, top: 0">Logout</button>
