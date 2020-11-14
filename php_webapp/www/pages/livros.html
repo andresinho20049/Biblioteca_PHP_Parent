@@ -29,7 +29,23 @@
                     <div class="row justify-content-md-center" style="margin-top: 10px;">
                         <div class="col-4">
                             <h5 class="mb-4" id="totalItens"></h5>
-                        </div>   
+                        </div>                           
+                    </div>
+                    
+                    <div class="row justify-content-end">
+                        <div class="col-2">
+                            <p class="mb-3 text-muted text-uppercase small">
+                                Itens Page:
+                            </p>
+                        </div>
+
+                        <div class="col-3">
+                            <div class="def-number-input number-input safari_only mb-0 w-100">
+                                <input id="tam_pagina" class="quantity" type="number" min="5" value="10" max="50"/>
+                                <button class="btn btn-outline-dark" id="alter_tam_pagina"><i class="fa fa-refresh">&#xf021;</i></button>
+                            </div>
+                        </div>
+
                         <!--Paginação-->
                         <div class="col-6">
                             <button class="btn btn-outline-dark" id="anterior" disabled>&lsaquo; Anterior</button>
@@ -39,6 +55,7 @@
                     </div>
 
                 </div>
+
                 <!--Grid column-->
             
                 <!--Grid column-->

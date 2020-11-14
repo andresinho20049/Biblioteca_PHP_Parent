@@ -176,6 +176,15 @@ $(function() {
         carregaLista();
         }
     });
+    $('#alter_tam_pagina').click(function() {
+        var inputPage = document.getElementById("tam_pagina");
+        tamanhoPagina = $(inputPage).val();
+        if (tamanhoPagina < 5 || tamanhoPagina > 50) {
+            tamanhoPagina = 10;
+            inputPage.value = 10;
+        }
+        carregaLista();
+    });
 });
 
 function addCar(livro) {
